@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="newsfeed_loading_error">Error while loading news feed.</string>
+</resources>

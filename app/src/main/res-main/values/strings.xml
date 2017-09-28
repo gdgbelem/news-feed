@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Notícias</string>
+    <string name="newsfeed_loading_error">Erro ao carregar feed de notícias.</string>
+</resources>
