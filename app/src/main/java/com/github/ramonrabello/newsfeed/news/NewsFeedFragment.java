@@ -7,12 +7,14 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.github.ramonrabello.newsfeed.R;
-import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.github.ramonrabello.newsfeed.common.TextUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +24,18 @@ import butterknife.ButterKnife;
  */
 public class NewsFeedFragment extends Fragment implements NewsContract.View {
 
+    @BindView(R.id.loading_progress)
+    ProgressBar loadingProgress;
+
     @BindView(R.id.news_recycler_view)
-    SuperRecyclerView newsRecyclerView;
+    RecyclerView newsRecyclerView;
 
     private NewsFeedAdapter newsFeedAdapter;
+    private NewsFeedPresenter newsFeedPresenter;
+
+    public static NewsFeedFragment newInstance() {
+      return new NewsFeedFragment();
+    }
 
     @Nullable
     @Override
@@ -35,20 +45,30 @@ public class NewsFeedFragment extends Fragment implements NewsContract.View {
         ButterKnife.bind(this, view);
 
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        newsRecyclerView.addItemDecoration(new LineDividerItemDecoration(getActivity()));
         newsFeedAdapter = new NewsFeedAdapter();
+        newsFeedPresenter = new NewsFeedPresenter(this);
         newsRecyclerView.setAdapter(newsFeedAdapter);
 
         return view;
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        newsFeedPresenter.loadNews();
+    }
+
+    @Override
     public void showProgress() {
-        newsRecyclerView.showProgress();
+        loadingProgress.setVisibility(View.VISIBLE);
+        newsRecyclerView.setVisibility(View.GONE);
     }
 
     @Override
     public void hideProgress() {
-        newsRecyclerView.hideProgress();
+        loadingProgress.setVisibility(View.GONE);
+        newsRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
