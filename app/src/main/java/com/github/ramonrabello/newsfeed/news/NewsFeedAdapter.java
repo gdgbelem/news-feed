@@ -66,7 +66,6 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.FeedIt
         @BindView(R.id.feed_item_thumb_image)
         ImageView feedItemThumbImage;
 
-
         FeedItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
