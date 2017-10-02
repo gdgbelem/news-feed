@@ -3,4 +3,6 @@
     <string name="newsfeed_loading_error">Error while loading news feed.</string>
     <string name="thumb_image_content_description">Feed item thumb image</string>
     <string name="action_share">Share</string>
+    <string name="error_message">An error ocurred. Please try to reload.</string>
+    <string name="error_try_again_button">TRY AGAIN</string>
 </resources>

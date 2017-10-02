@@ -28,19 +28,20 @@ public class FeedItemViewHolder extends BaseViewHolder<FeedItem> implements View
     ImageView feedItemThumbImage;
 
     private OnFeedItemClickListener onFeedItemClickListener;
+    private UpdatedTimeFormatter updatedTimeFormatter = new UpdatedTimeFormatter();
 
     FeedItemViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         TextUtils.asRegular(getAssets(), feedItemTitle);
-        TextUtils.asLight(getAssets(), feedItemUpdated);
+        TextUtils.asRegular(getAssets(), feedItemUpdated);
     }
 
     @Override
     public void bind(final FeedItem feedItem) {
         itemView.setTag(feedItem);
         feedItemTitle.setText(feedItem.getTitle());
-        feedItemUpdated.setText(new UpdatedTimeFormatter().format(feedItem.getUpdated()));
+        feedItemUpdated.setText(updatedTimeFormatter.format(feedItem.getUpdated()));
 
         if (feedItem.withThumb()) {
             if (!feedItemThumbImage.isShown()) {

@@ -9,6 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
+
 import butterknife.ButterKnife;
 
 /**
@@ -17,7 +19,7 @@ import butterknife.ButterKnife;
  *
  * @param <T> The type associated to this view holder.
  */
-public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
+public abstract class BaseViewHolder<T> extends UltimateRecyclerviewViewHolder {
 
     public BaseViewHolder(View itemView) {
         super(itemView);
@@ -31,14 +33,6 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @param modelType The type to be bound in the view holder.
      */
     public abstract void bind(T modelType);
-
-    protected Context getContext(){
-        return itemView.getContext();
-    }
-
-    protected Resources getResources(){
-        return itemView.getContext().getResources();
-    }
 
     protected AssetManager getAssets(){
         return itemView.getContext().getAssets();

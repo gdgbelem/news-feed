@@ -7,12 +7,18 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.github.ramonrabello.newsfeed.BuildConfig;
 import com.github.ramonrabello.newsfeed.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +32,10 @@ public class NewsFeedFragment extends Fragment implements NewsContract.View {
     ProgressBar loadingProgress;
 
     @BindView(R.id.news_recycler_view)
-    RecyclerView newsRecyclerView;
+    UltimateRecyclerView newsRecyclerView;
+
+    @BindView(R.id.ad_view)
+    AdView adView;
 
     private NewsFeedAdapter newsFeedAdapter;
     private NewsFeedPresenter newsFeedPresenter;
@@ -47,13 +56,18 @@ public class NewsFeedFragment extends Fragment implements NewsContract.View {
         newsFeedAdapter = new NewsFeedAdapter();
         newsFeedPresenter = new NewsFeedPresenter(this);
         newsRecyclerView.setAdapter(newsFeedAdapter);
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        if (BuildConfig.DEBUG) {
+            AdRequest.Builder adRequestBuilder = new AdRequest.Builder()
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
+            adView.loadAd(adRequestBuilder.build());
+        }
         newsFeedPresenter.loadNews();
     }
 
