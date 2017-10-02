@@ -20,6 +20,10 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     sourceSets {
         main.res.srcDirs = ['src/main/res-main',
                             'src/main/res-screen/news',
