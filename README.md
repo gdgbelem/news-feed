@@ -38,11 +38,10 @@ This app is being developed using to the [Model-View-Presenter presentation patt
 The app uses the following lib dependencies:
 * Retrofit 2: To make network REST calls in typesafe way.
 * Gson: To parse JSON streams or files easily.
-* Glide: Image loading that loads image efficiently.
+* Glide 4: Image loading that loads image efficiently.
 * RxJava: Java implementation of [Reactive Extensions](https://github.com/Reactive-Extensions) API for asynchronous programming with Observable streams.
-* Dagger 2: Dependency injection framework.
 * Android Support Libraries: support-v4, support-annotations, appcompat-v7, recyclerview-v7, design.
-* JaCoCo Plugin: Used to generate Test Coverage report.
+* Coverage: Used to generate Test Coverage report.
 * Espresso: Lib used for UI instrumented tests
 * Mockito: Used for mocking object during unit tests
 
