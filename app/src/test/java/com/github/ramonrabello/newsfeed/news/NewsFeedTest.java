@@ -2,9 +2,11 @@ package com.github.ramonrabello.newsfeed.news;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -23,14 +25,20 @@ public class NewsFeedTest {
     }
 
     @Test
-    public void shouldCheckIfNewsFeedIsNotEmpty(){
+    public void shouldCheckIfFeedItemsWereAdded(){
         NewsFeed newsFeed = new NewsFeed();
         FeedItem firstItem = mock(FeedItem.class);
         FeedItem secondItem = mock(FeedItem.class);
         FeedItem thirdItem = mock(FeedItem.class);
-        newsFeed.getFeed().add(firstItem);
-        newsFeed.getFeed().add(secondItem);
-        newsFeed.getFeed().add(thirdItem);
+        newsFeed.addItems(Arrays.asList(firstItem, secondItem, thirdItem));
         assertFalse(newsFeed.getFeed().isEmpty());
+    }
+
+    @Test
+    public void shouldCheckIfFeedItemWasAdded(){
+        NewsFeed newsFeed = new NewsFeed();
+        FeedItem firstItem = mock(FeedItem.class);
+        newsFeed.addItem(firstItem);
+        assertEquals(newsFeed.getFeed().size(), 1);
     }
 }
