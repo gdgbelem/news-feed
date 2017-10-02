@@ -20,7 +20,7 @@ public class FeedItem implements Parcelable{
     @SerializedName("webview-url")
     private String webviewUrl;
 
-    protected FeedItem(Parcel in) {
+    public FeedItem(Parcel in) {
         type = in.readString();
         title = in.readString();
         thumb = in.readString();
@@ -108,5 +108,33 @@ public class FeedItem implements Parcelable{
         parcel.writeLong(updated);
         parcel.writeString(shareUrl);
         parcel.writeString(webviewUrl);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FeedItem feedItem = (FeedItem) o;
+
+        if (updated != feedItem.updated) return false;
+        if (type != null ? !type.equals(feedItem.type) : feedItem.type != null) return false;
+        if (title != null ? !title.equals(feedItem.title) : feedItem.title != null) return false;
+        if (thumb != null ? !thumb.equals(feedItem.thumb) : feedItem.thumb != null) return false;
+        if (shareUrl != null ? !shareUrl.equals(feedItem.shareUrl) : feedItem.shareUrl != null)
+            return false;
+        return webviewUrl != null ? webviewUrl.equals(feedItem.webviewUrl) : feedItem.webviewUrl == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (thumb != null ? thumb.hashCode() : 0);
+        result = 31 * result + (int) (updated ^ (updated >>> 32));
+        result = 31 * result + (shareUrl != null ? shareUrl.hashCode() : 0);
+        result = 31 * result + (webviewUrl != null ? webviewUrl.hashCode() : 0);
+        return result;
     }
 }
