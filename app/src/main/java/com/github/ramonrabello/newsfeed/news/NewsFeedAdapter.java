@@ -41,7 +41,7 @@ class NewsFeedAdapter extends UltimateViewAdapter implements FeedItemViewHolder.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         FeedItemViewHolder viewHolder = (FeedItemViewHolder) holder;
-        if (!feedItems.isEmpty()){
+        if (position < getItemCount() && (customHeaderView != null ? position <= feedItems.size() : position < feedItems.size()) && (customHeaderView != null ? position > 0 : true)) {
             viewHolder.bind(feedItems.get(position));
         }
     }
