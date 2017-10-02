@@ -1,5 +1,6 @@
 package com.github.ramonrabello.newsfeed.news;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public class NewsFeed {
 
-    private List<FeedItem> feed;
+    private List<FeedItem> feed = new ArrayList<>();
 
     public List<FeedItem> getFeed() {
         return feed;
@@ -15,5 +16,13 @@ public class NewsFeed {
 
     public void setFeed(List<FeedItem> feed) {
         this.feed = feed;
+    }
+
+    public void addItem(FeedItem feedItem){
+        feed.add(feedItem);
+    }
+
+    public void addItems(List<FeedItem> feedItems){
+        feed.addAll(feedItems);
     }
 }
