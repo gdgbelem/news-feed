@@ -2,4 +2,5 @@
 <resources>
     <string name="newsfeed_loading_error">Error while loading news feed.</string>
     <string name="thumb_image_content_description">Feed item thumb image</string>
+    <string name="action_share">Share</string>
 </resources>
