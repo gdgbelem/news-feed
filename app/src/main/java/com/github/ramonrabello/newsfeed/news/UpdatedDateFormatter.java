@@ -1,13 +1,14 @@
 package com.github.ramonrabello.newsfeed.news;
 
-/**
- * Created by ramonrabello on 29/09/17.
- */
+import com.github.ramonrabello.newsfeed.common.Formatter;
 
-class UpdatedDateFormatter implements UpdatedFormatter {
+/**
+ * A {@link Formatter} for displaying date information.
+ */
+class UpdatedDateFormatter implements Formatter<Long> {
 
     @Override
-    public String format(long updated){
+    public String format(Long updated){
         String updatedAsString = String.valueOf(updated);
         String date = updatedAsString.substring(6,8);
         String month = updatedAsString.substring(4,6);
