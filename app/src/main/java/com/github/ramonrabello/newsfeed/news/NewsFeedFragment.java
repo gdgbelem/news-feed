@@ -1,6 +1,5 @@
 package com.github.ramonrabello.newsfeed.news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.github.ramonrabello.newsfeed.R;
-import com.github.ramonrabello.newsfeed.common.TextUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
